@@ -4,7 +4,7 @@
 
 2) This matters because to run a shell script from any directory in the terminal, you have to type out the full path.  In my case I have to type out ~/scripts/git-script.sh to run the script.  But we're getting ahead of ourselves.
 
-3) copy the code chunk at the bottom of  this post and then open a text editor, paste it in and then save it as [filename].sh.  The .sh is the extension for shell scripts.  Save the file in the directory you want to save it at - again I recommend ~/scripts as the folder to save your scripts in.
+3) Download the shell script file in the Repo.  The .sh is the extension for shell scripts.  Save the file in the directory you want to save it at - again I recommend ~/scripts as the folder to save your scripts in.
 
 4) Navigate to that folder in your terminal. To be safe run ls in the terminal to check that you can see the script is there. If it's not you're in the wrong folder or step 3 didn't successfully complete.
 
