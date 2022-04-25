@@ -2,18 +2,23 @@
 
 1) I keep my scripts in my root/home folder, in a sub-folder called scripts.  I suggest you do the same or similar.  To get to the root/home folder, in your terminal type cd ~ because the tilda ( ~ )is the symbol for the home folder.  In your Mac Finder app it shows up as the one with a house icon.  So all my scripts are stored in ~/scripts
 
-2) This matters because to run a shell script from any directory in the terminal, you have to type out the full path.  In my case I have to type out ~/scripts/git-script.sh to run the script.  But we're getting ahead of ourselves.
+2) This matters because to run a shell script from any directory in the terminal, you have to type out the full path.  In my case I have to type out ~/scripts/script.sh to run the script.
 
 3) copy the code chunk at the bottom of  this post and then open a text editor, paste it in and then save it as [filename].sh.  The .sh is the extension for shell scripts.  Save the file in the directory you want to save it at - again I recommend ~/scripts as the folder to save your scripts in.
 
 4) Navigate to that folder in your terminal. To be safe run ls in the terminal to check that you can see the script is there. If it's not you're in the wrong folder or step 3 didn't successfully complete.
 
-5) Make the shell script executable.  To do that you type the following in the terminal: chmod +x <<the-correct-filename.sh>>.  This is the unix way to make a shell script "executable".  I'm not confident I fully understand what that means, other than it's needed to make any shell scripts you write executable, so don't ask me and I won't lie to you.
+5) Make the shell script executable.  To do that you type the following in the terminal: chmod +x <<the-correct-filename.sh>>.  This is the unix way to make a shell script "executable".
 
-6) navigate to your projects folder and make a new folder that you intend to house your project.  Effectively, you've got to do this:  mkdir - create a project-of-some-name inside the folder where you keep all your projects. So your project will eventually be placed inside my-computer/my-projects/project-of-some-name. cd into this folder and then type pwd to get the full path.  Copy that - you will need to paste it shortly. It should look like my-computer/my-projects/project-of-some-name
+6) navigate to your projects folder and make a new folder that you intend to house your project.  Effectively, you've got to do this:
+    - mkdir - create a project-of-some-name inside the folder where you keep all your projects.
+    - cd into this folder and then type pwd to get the full path.
+    - Copy that - you will need to paste it shortly.
+    - It should look like my-computer/my-projects/project-of-some-name
 
 7) open your terminal again, and then type ~/scripts/<<the-correct-filename.sh>>.  The script runs!  You will be guided through some input...   The main steps are:
-    > what do you want to call your Github repo (don't use spaces- 'my-awesome-project' is good. Don't use 'my awesome project' as the repo name.
+ 
+  > what do you want to call your Github repo (don't use spaces- 'my-awesome-project' is good. Don't use 'my awesome project' as the repo name.
 
   > Enter a description that shows up in the Github repo's description. For this it's safe to use spaces.
 
