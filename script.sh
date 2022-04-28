@@ -1,5 +1,5 @@
 # Make executable with chmod +x <<filename.sh>>
-GENREPO="https://github.com/hassanaftab93/general-project-template.git"
+
 CURRENTDIR=${pwd}
 
 # step 1: name of the remote repo. Enter a SINGLE WORD ..or...separate with hyphens
@@ -22,13 +22,9 @@ cd "$PROJECT_PATH"
 
 
 # step 4: initialise the repo locally, create blank README, add and commit
-git clone ${GENREPO}
-mv general-project-template ${REPO_NAME}
-cd ${REPO_NAME}
-PROJECT_PATH=${pwd}
-git add .
-#touch README.MD
-#git add README.MD
+git init
+touch README.MD
+git add README.MD
 git commit -m 'initial commit -setup with .sh script'
 
 
