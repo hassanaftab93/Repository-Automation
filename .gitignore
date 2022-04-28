@@ -1,0 +1,8 @@
+### PowerShell ###
+# Exclude packaged modules
+*.zip
+*.txt
+# Exclude .NET assemblies from source
+*.dll
+
+# End of File
