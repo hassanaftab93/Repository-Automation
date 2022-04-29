@@ -1,11 +1,37 @@
 # Make executable with chmod +x <<filename.sh>>
 
 # TODO NOTES
-# 1. Remove Commit History
-# 2. Disable variable visibility / Hide Variable / File in Github w/o removing Token
+# 1. Remove Commit History                      - IN PROGRESS
+# 2. Manage to Hide Access Token Contents       - DONE
+# 3. Include module to handle accesstoken.txt   - DONE
 
-CURRENTDIR='cd ~'
+#------------------------------------New Module for accesstoken.txt------------------------------------#
+CURRENTDIR=`pwd`
+echo "Current Directory: "$CURRENTDIR
+
+FILE=./accesstoken.txt
+if [ -f "$FILE" ]; then
+    echo "Access Token already exists."
+    break
+else 
+    echo "Access Token does not exist."
+    echo "Creating Access Token File."
+    touch accesstoken.txt
+    echo "Enter Your Github Personal Access Token: "
+    read KEY_INPUT
+
+    if [ -f "$FILE" ]; then 
+        echo -n "$KEY_INPUT" >> "$FILE"
+    fi
+fi
+
 PERSONAL_ACCESS_TOKEN=`cat accesstoken.txt`
+CHARACTERS=`wc -c < accesstoken.txt`
+echo "Your Access Token is: "$PERSONAL_ACCESS_TOKEN
+echo "Length of Access Token: "$CHARACTERS
+
+#------------------------------------------------------------------------------------------------------#
+
 TEMPLATE_LINK="https://github.com/hassanaftab93/general-project-template"
 
 # step 1: name of the remote repo. Enter a SINGLE WORD ..or...separate with hyphens
@@ -24,6 +50,7 @@ read USER_NAME
 
 # step 3 : go to path 
 cd "$PROJECT_PATH"
+echo "Project Directory: "$PROJECT_PATH
 
 git clone ${TEMPLATE_LINK}
 echo "Template Repo Cloned."
