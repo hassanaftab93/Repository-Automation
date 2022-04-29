@@ -31,7 +31,19 @@ echo "Your Access Token is: "$PERSONAL_ACCESS_TOKEN
 echo "Length of Access Token: "$CHARACTERS
 #------------------------------------------------------------------------------------------------------#
 
+#--------------------------------New Module: Ask for Custom Template-----------------------------------#
 TEMPLATE_LINK="https://github.com/hassanaftab93/general-project-template"
+echo ""
+echo "If You want to use your own GitHub Repo Template. Enter the Link"
+echo "Otherwise, Leave Empty"
+echo "Link: "
+read LINK
+if [ ${LINK}=="" ]; then
+    break
+else
+    TEMPLATE_LINK=LINK
+fi
+#------------------------------------------------------------------------------------------------------#
 
 # step 1: name of the remote repo. Enter a SINGLE WORD ..or...separate with hyphens
 echo "What name do you want to give your remote repo?"
