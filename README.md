@@ -1,5 +1,5 @@
 
-# REPOSITORY-AUOTMATION
+# Repository-Automation
 
 <!-- --- DEPLOYMENT STATUS CODE ---
 
