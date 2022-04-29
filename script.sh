@@ -76,7 +76,7 @@ git checkout --orphan temp_branch
 echo ""
 git add .
 echo ""
-git commit -am "Inital Commit to Repository"
+git commit -am "Inital Commit to Repository with Automation Script"
 echo ""
 git branch -D main
 echo ""
@@ -102,9 +102,9 @@ git push -u -f origin main
 echo "New Remote Origin set"
 
 # step 7 change to your project's root directory.
-CURRENTDIR = "${pwd}"
-echo ${CURRENTDIR}
+cd ${PROJECT_PATH}/${REPO_NAME}
+echo "Local Repository Directory: "`pwd`
 
-echo "Go to https://github.com/$USER_NAME/$REPO_NAME to See new Repository."
+echo "GITHUB REPOSITORY LINK: https://github.com/$USER_NAME/$REPO_NAME"
 echo ""
-echo " *** You're now in your project root. ***"
+echo " *** You're now in your project root. ***\n"
