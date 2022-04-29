@@ -1,11 +1,36 @@
 # Make executable with chmod +x <<filename.sh>>
 
 # TODO NOTES
-# 1. Remove Commit History
-# 2. Disable variable visibility / Hide Variable / File in Github w/o removing Token
+# 1. Remove Commit History                      - DONE
+# 2. Manage to Hide Access Token Contents       - DONE
+# 3. Include module to handle accesstoken.txt   - DONE
 
-CURRENTDIR='cd ~'
+#------------------------------------New Module for accesstoken.txt------------------------------------#
+CURRENTDIR=`pwd`
+echo "Current Directory: "$CURRENTDIR
+
+FILE=./accesstoken.txt
+if [ -f "$FILE" ]; then
+    echo "Access Token already exists."
+    break
+else 
+    echo "Access Token does not exist."
+    echo "Creating Access Token File."
+    touch accesstoken.txt
+    echo "Enter Your Github Personal Access Token: "
+    read KEY_INPUT
+
+    if [ -f "$FILE" ]; then 
+        echo -n "$KEY_INPUT" >> "$FILE"
+    fi
+fi
+
 PERSONAL_ACCESS_TOKEN=`cat accesstoken.txt`
+CHARACTERS=`wc -c < accesstoken.txt`
+echo "Your Access Token is: "$PERSONAL_ACCESS_TOKEN
+echo "Length of Access Token: "$CHARACTERS
+#------------------------------------------------------------------------------------------------------#
+
 TEMPLATE_LINK="https://github.com/hassanaftab93/general-project-template"
 
 # step 1: name of the remote repo. Enter a SINGLE WORD ..or...separate with hyphens
@@ -23,22 +48,47 @@ echo "What is your github username?"
 read USER_NAME
 
 # step 3 : go to path 
+echo ""
 cd "$PROJECT_PATH"
+echo "Project Directory: "$PROJECT_PATH
 
+echo ""
 git clone ${TEMPLATE_LINK}
 echo "Template Repo Cloned."
 
 mv general-project-template ${REPO_NAME}
+echo ""
 echo "Folder Renamed"
+cd ${REPO_NAME}
+echo ""
+echo "Current Directory: `pwd`"
+echo ""
 
 echo "Template repo's origin: Removal in Process"
-cd ${REPO_NAME}
-
-#Remove commit history later
-
 git remote remove origin
 git init
 echo "Template repo's origin: Removed"
+echo ""
+
+#------------------------------------New Module for Removing commit history------------------------------------#
+echo "Template repo's Commit History: Removal in Process"
+git checkout --orphan temp_branch
+echo ""
+git add .
+echo ""
+git commit -am "Inital Commit to Repository"
+echo ""
+git branch -D main
+echo ""
+git branch -m main
+echo ""
+git status
+echo ""
+git branch
+echo ""
+echo "Template repo's Commit History: Removed"
+echo ""
+#--------------------------------------------------------------------------------------------------------------#
 
 # step 5 use github API to log the user in
 echo "Generating Repository on Github..."
@@ -48,12 +98,13 @@ echo "New Repo created on Github"
 #  step 6 add the remote github repo to local repo and push
 echo "Setting Remote Origin..."
 git remote add origin https://github.com/${USER_NAME}/${REPO_NAME}.git
-git push --set-upstream origin main
+git push -u -f origin main
 echo "New Remote Origin set"
 
 # step 7 change to your project's root directory.
 CURRENTDIR = "${pwd}"
 echo ${CURRENTDIR}
 
-echo "Go to https://github.com/$USER_NAME/$REPO_NAME to See new Repository." 
+echo "Go to https://github.com/$USER_NAME/$REPO_NAME to See new Repository."
+echo ""
 echo " *** You're now in your project root. ***"
