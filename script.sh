@@ -95,6 +95,7 @@ echo "Project Directory: "$PROJECT_PATH
 echo ""
 git clone ${TEMPLATE_LINK}
 echo "Template Repo Cloned."
+
 mv ${TEMPREPO} ${REPO_NAME}
 echo ""
 echo "Folder Renamed"
