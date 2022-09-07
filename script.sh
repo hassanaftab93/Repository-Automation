@@ -56,11 +56,13 @@ case $NUMBER_CHOICE in
         ;;
     b)
         echo "> General Project Template Chosen"
+        TEMPREPO="general-project-template"
         TEMPLATE_LINK="https://github.com/hassanaftab93/general-project-template"
         echo $TEMPLATE_LINK
         ;;
     c)  
         echo "> Golang Project Template Chosen"
+        TEMPREPO="go-project-template"
         TEMPLATE_LINK="https://github.com/hassanaftab93/go-project-template"
         echo $TEMPLATE_LINK
         ;;
@@ -93,8 +95,9 @@ echo "Project Directory: "$PROJECT_PATH
 echo ""
 git clone ${TEMPLATE_LINK}
 echo "Template Repo Cloned."
-
-mv general-project-template ${REPO_NAME}
+echo "temprepo value ${TEMPREPO}"
+read x
+mv ${TEMPREPO} ${REPO_NAME}
 echo ""
 echo "Folder Renamed"
 cd ${REPO_NAME}
@@ -114,7 +117,7 @@ git checkout --orphan temp_branch
 echo ""
 git add .
 echo ""
-git commit -am "Inital Commit to Repository with Automation Script"
+git commit -am "Initial Commit to Repository with Automation Script"
 echo ""
 git branch -D main
 echo ""
