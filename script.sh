@@ -32,17 +32,45 @@ echo "Length of Access Token: "$CHARACTERS
 #------------------------------------------------------------------------------------------------------#
 
 #--------------------------------New Module: Ask for Custom Template-----------------------------------#
-TEMPLATE_LINK="https://github.com/hassanaftab93/general-project-template"
-echo ""
-echo "If You want to use your own GitHub Repo Template. Enter the Link"
-echo "Otherwise, Leave Empty"
-echo "Link: "
-read LINK
-if [ ${LINK}=="" ]; then
-    break
-else
-    TEMPLATE_LINK=LINK
-fi
+clear
+echo "\nPress \"a\" if you would you like to use your own public template repo"
+echo "Press \"b\" if you would you like to use \"General Project Template\""
+echo "Press \"c\" if you would you like to use \"Golang Project Template\""
+echo "\nWrong inputs will exit the script."
+
+GIT_LINK="https://www.github.com/"
+
+echo "\nEnter a/b/c:"
+read NUMBER_CHOICE
+
+case $NUMBER_CHOICE in
+    a)
+        echo "> Enter GitHub Repo Owner UserName: "
+        read GITUSER
+        TEMPLATE_LINK="$GIT_LINK$GITUSER"
+        TEMPLATE_LINK="$TEMPLATE_LINK/"
+        echo "> Enter ${GITUSER}'s Template RepoName: "
+        read TEMPREPO
+        TEMPLATE_LINK="$TEMPLATE_LINK$TEMPREPO"
+        echo $TEMPLATE_LINK
+        ;;
+    b)
+        echo "> General Project Template Chosen"
+        TEMPREPO="general-project-template"
+        TEMPLATE_LINK="https://github.com/hassanaftab93/general-project-template"
+        echo $TEMPLATE_LINK
+        ;;
+    c)  
+        echo "> Golang Project Template Chosen"
+        TEMPREPO="go-project-template"
+        TEMPLATE_LINK="https://github.com/hassanaftab93/go-project-template"
+        echo $TEMPLATE_LINK
+        ;;
+    *)
+        printf 'No match for "%s"\n' "$NUMBER_CHOICE"
+        exit
+esac
+
 #------------------------------------------------------------------------------------------------------#
 
 # step 1: name of the remote repo. Enter a SINGLE WORD ..or...separate with hyphens
@@ -67,8 +95,9 @@ echo "Project Directory: "$PROJECT_PATH
 echo ""
 git clone ${TEMPLATE_LINK}
 echo "Template Repo Cloned."
-
-mv general-project-template ${REPO_NAME}
+echo "temprepo value ${TEMPREPO}"
+read x
+mv ${TEMPREPO} ${REPO_NAME}
 echo ""
 echo "Folder Renamed"
 cd ${REPO_NAME}
@@ -88,7 +117,7 @@ git checkout --orphan temp_branch
 echo ""
 git add .
 echo ""
-git commit -am "Inital Commit to Repository with Automation Script"
+git commit -am "Initial Commit to Repository with Automation Script"
 echo ""
 git branch -D main
 echo ""
