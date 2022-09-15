@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Make executable with chmod +x <<filename.sh>>
 
 # TODO NOTES
@@ -6,6 +8,7 @@
 # 3. Include module to handle accesstoken.txt   - DONE
 
 #------------------------------------New Module for accesstoken.txt------------------------------------#
+
 CURRENTDIR=`pwd`
 echo "Current Directory: "$CURRENTDIR
 
@@ -81,8 +84,21 @@ echo "Enter a repo description: "
 read DESCRIPTION
 
 # step 2:  the local project folder path
-echo "what is the absolute path to your local project directory? e.g '/Volumes/HDD/Projects'"
+echo "\n What is the absolute path to your local project directory? e.g '/Volumes/HDD/Projects'"
+echo "\n Or For Windows: /d D:/'VS Code Projects'"
 read PROJECT_PATH
+
+echo"\n Entered Project PATH: $PROJECT_PATH"
+
+echo"\n Is this correct? (Y/N)"
+read CHOICE
+if [$CHOICE=="Y"]; then
+    break
+else
+    echo "\n Exiting.."
+    sleep 3
+    exit
+fi
 
 echo "What is your github username?"
 read USER_NAME
