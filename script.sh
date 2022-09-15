@@ -85,20 +85,10 @@ read DESCRIPTION
 
 # step 2:  the local project folder path
 echo "\n What is the absolute path to your local project directory? e.g '/Volumes/HDD/Projects'"
-echo "\n Or For Windows: /d D:/'VS Code Projects'"
+echo "\n Or For Windows: D:/'VS Code Projects'"
 read PROJECT_PATH
 
-echo"\n Entered Project PATH: $PROJECT_PATH"
-
-echo"\n Is this correct? (Y/N)"
-read CHOICE
-if [$CHOICE=="Y"]; then
-    break
-else
-    echo "\n Exiting.."
-    sleep 3
-    exit
-fi
+echo "\n Entered Project PATH: $PROJECT_PATH"
 
 echo "What is your github username?"
 read USER_NAME
